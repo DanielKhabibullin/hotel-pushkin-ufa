@@ -66,18 +66,15 @@ const modalController = ({modal, btnOpen, btnClose, time = 300, pictureElemClass
       modalElem.style.opacity = 1;
       if (modalElem.classList.contains('modal-enlarge')) {
         const imgElem = imgTemplate.cloneNode(true);
-  
+
         if (pictureElemClass) {
           const pictureElem = document.querySelector(`.${pictureElemClass}`);
           const sourceElem = pictureElem.querySelector('source');
           const imgSrc = sourceElem ? sourceElem.srcset : pictureElem.querySelector('img').src;
           imgElem.src = imgSrc;
         }
-  
         imgElem.alt = 'Увеличенное изображение';
-  
         const modalContainer = modalElem.querySelector('.modal__container');
-        // Очищаем содержимое modal__container перед вставкой нового изображения
         modalContainer.innerHTML = '';
         modalContainer.appendChild(imgElem);
       }
@@ -90,45 +87,13 @@ const modalController = ({modal, btnOpen, btnClose, time = 300, pictureElemClass
     btn.addEventListener('click', () => openModal(modalElem, pictureElemClass));
   });
 
-  // document.addEventListener('DOMContentLoaded', () => {
-  //   const button1 = document.querySelector('.modal__auto-open');
-  
-  //   setTimeout(() => {
-  //     button1.click();
-
-  //   }, 10);
-  // });
-
   modalElem.addEventListener('click', (event) => closeModal(event));
 };
-modalController({
-  modal: '.modal1',
-  btnOpen: '.modal__auto-open',
-  btnClose: '.modal__close',
-});
-modalController({
-  modal: '.modal-enlarge',
-  btnOpen: '.enlarge-picture1',
-  btnClose: '.modal__close',
-  pictureElemClass: 'enlarge-picture1',
-});
 
 modalController({
   modal: '.modal-enlarge',
-  btnOpen: '.enlarge-picture2',
+  btnOpen: '.enlarge-picture',
   btnClose: '.modal__close',
-  pictureElemClass: 'enlarge-picture2',
+  pictureElemClass: 'enlarge-picture',
 });
 
-modalController({
-  modal: '.modal-enlarge',
-  btnOpen: '.enlarge-picture3',
-  btnClose: '.modal__close',
-  pictureElemClass: 'enlarge-picture3',
-});
-modalController({
-  modal: '.modal-enlarge',
-  btnOpen: '.enlarge-picture4',
-  btnClose: '.modal__close',
-  pictureElemClass: 'enlarge-picture4',
-});
